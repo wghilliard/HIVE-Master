@@ -5,7 +5,7 @@ import pika
 from pika.exceptions import ConnectionClosed
 
 # Flask task offloading
-queue = Celery('tasks', broker='amqp://guest@localhost//')
+# queue = Celery('tasks', broker='amqp://guest@localhost//')
 
 
 # END-TEST

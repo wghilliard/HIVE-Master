@@ -66,9 +66,10 @@ class Job(db.Document):
             data = self.to_mongo().to_dict()
             data['batch_id'] = int(x)
             data['events'] = str(events_per_cont)
+
+            del (data['start_time'])
             del (data['_id'])
             del (data['batches'])
-            del (data['start_time'])
 
             add(data)
 

@@ -1,3 +1,7 @@
 secret_key.py
 .idea
+<<<<<<< HEAD
 *.pyc
+=======
+*.pyc
+>>>>>>> 5735a8393b156139afd8f97d78becfa927c7daa3
