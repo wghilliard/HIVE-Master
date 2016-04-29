@@ -11,8 +11,8 @@ def index():
 
 class JobView(ModelView):
     # form_columns = ('job_id', 'name', 'events', 'new_file')
-    form_excluded_columns = ['status', 'complete', 'batches', 'started']
-    form_ajax_refs = {
+    form_excluded_columns = ['status', 'complete', 'batches', 'started', 'start_time', 'job_id']
+    column_ajax_refs = {
         'batches': {
             'fields': ['batch_id']
         }
@@ -27,6 +27,13 @@ class JobView(ModelView):
             if not job.started:
                 job.start()
 
+    @action('check', 'Check Complete', 'Are you sure you want to run checks?')
+    def action_check(self, ids):
+        for id in ids:
+            job = Job.objects.get(pk=id)
+            if job.check_complete():
+                job.complete = True
+                job.save()
 
 admin.add_view(JobView(Job, name='Jobs'))
 admin.add_view(ModelView(Batch, name='Batches'))

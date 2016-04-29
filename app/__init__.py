@@ -16,7 +16,7 @@ db = MongoEngine(app)
 # Flask-Admin
 admin = Admin(app, name='Lariatsoft', template_mode='bootstrap3')
 
-import views
+import views, api
 
 
 
