@@ -28,6 +28,7 @@ def add(data_dict):
         channel.basic_publish(exchange='',
                               routing_key='dispatch',
                               body=encoded_body)
+        connection.close()
     except ConnectionClosed as e:
         print e
         add(data_dict)

@@ -20,7 +20,7 @@ class Batch(db.Document):
 
 
 class Job(db.Document):
-    job_id = db.IntField(required=True)
+    job_id = db.IntField(required=True, unique=True)
     events = db.IntField(required=True)
     name = db.StringField(required=True, default='electron')
     out_dir = db.StringField(default='electron/')
