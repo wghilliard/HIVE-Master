@@ -14,9 +14,16 @@ class Batch(db.Document):
     status = db.StringField()
     complete = db.BooleanField(default=False)
     error = db.StringField()
+    start_time = db.DateTimeField()
+    end_time = db.DateTimeField()
 
     def __str__(self):
         return str(self.batch_id)
+
+
+class Worker(db.Document):
+    worker_id = db.StringField()
+    hostname = db.StringField()
 
 
 class Job(db.Document):
@@ -30,6 +37,7 @@ class Job(db.Document):
     started = db.BooleanField(default=False)
     complete = db.BooleanField(default=False)
     start_time = db.DateTimeField()
+    notes = db.StringField()
 
     def check_complete(self):
         for batch in self.batches:

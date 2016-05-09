@@ -1,15 +1,8 @@
-import urllib3
-from celery import Celery
 import json
 import pika
 from pika.exceptions import ConnectionClosed
 
-# Flask task offloading
-# queue = Celery('tasks', broker='amqp://guest@localhost//')
 
-
-# END-TEST
-# @queue.task
 def add(data_dict):
     try:
         # master - worker dispatch via rabbitmq
