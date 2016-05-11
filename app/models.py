@@ -8,6 +8,7 @@ import datetime
 
 class Batch(db.Document):
     batch_id = db.IntField(required=True)
+    events = db.IntField()
     job_id = db.IntField(required=True)
     out_path = db.StringField()
     log_path = db.StringField()
@@ -40,10 +41,13 @@ class Job(db.Document):
     notes = db.StringField()
 
     def check_complete(self):
-        for batch in self.batches:
-            if batch.complete is not True:
-                return False
-        return True
+        if self.started:
+            for batch in self.batches:
+                if batch.complete is not True:
+                    return False
+            return True
+        else:
+            return False
 
     def get(self):
         return {"job_id": self.job_id,
