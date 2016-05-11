@@ -8,8 +8,8 @@ import datetime
 
 class Batch(db.Document):
     batch_id = db.IntField(required=True)
-    events = db.IntField()
     job_id = db.IntField(required=True)
+    events = db.IntField()
     out_path = db.StringField()
     log_path = db.StringField()
     status = db.StringField()
@@ -72,7 +72,7 @@ class Job(db.Document):
         events_per_cont = int(self.events) / int(CONT_COUNT)
         self.start_time = datetime.datetime.now()
         for x in range(0, int(CONT_COUNT)):
-            batch = Batch(job_id=self.job_id, batch_id=int(x)).save()
+            batch = Batch(job_id=self.job_id, batch_id=int(x), events=events_per_cont).save()
             self.batches.append(batch)
 
             data = self.to_mongo().to_dict()
