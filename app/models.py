@@ -12,6 +12,7 @@ class Batch(db.Document):
     events = db.IntField()
     out_path = db.StringField()
     log_path = db.StringField()
+    err_path = db.StringField()
     status = db.StringField()
     complete = db.BooleanField(default=False)
     error = db.StringField()
