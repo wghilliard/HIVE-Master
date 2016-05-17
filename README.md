@@ -4,7 +4,7 @@
 *"Because whatever happens inside that container is black magic to me..." -anonymous*
 ___
 ### Description
-HIVE is a user-friendly master-slave batch-queue system designed to be attached to docker images containing Fermilab experiment software. One method of implimenting this system is to put both the worker and master code into one image and depending how you invoke your Docker container will determine it's role, however this may not be feasible for some implimentations.
+HIVE is a user-friendly master-slave batch-queue system designed to be attached to docker images containing Fermilab experiment software. One method of implimenting this system is to put both the worker and master code into one image and depending how you invoke your Docker container will determine its role, however this may not be feasible for some implimentations.
 
 Hive is built with:
 
