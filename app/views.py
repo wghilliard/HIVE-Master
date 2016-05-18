@@ -31,9 +31,7 @@ class JobView(ModelView):
     def action_check(self, ids):
         for id in ids:
             job = Job.objects.get(pk=id)
-            if job.check_complete():
-                job.complete = True
-                job.save()
+            job.check_complete()
 
 admin.add_view(JobView(Job, name='Jobs'))
 admin.add_view(ModelView(Batch, name='Batches'))

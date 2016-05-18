@@ -45,10 +45,12 @@ class Job(db.Document):
         if self.started:
             for batch in self.batches:
                 if batch.complete is not True:
-                    return False
-            return True
+                    self.complete = False
+            self.complete = True
         else:
-            return False
+            self.complete = False
+
+        self.save()
 
     def get(self):
         return {"job_id": self.job_id,
